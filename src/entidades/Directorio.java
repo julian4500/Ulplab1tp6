@@ -24,12 +24,18 @@ public class Directorio {
     }
 
     public int agregarCliente(Long telefono, Long dni, String nombre, String apellido, String direccion, String ciudad) {
-        Directorio.put(telefono, new Cliente(dni, nombre, apellido, direccion, ciudad));
-        return 1;
+        
+        if(Directorio.containsKey(telefono)){
+            return 0;
+        }else{
+            Directorio.put(telefono, new Cliente(dni, nombre, apellido, direccion, ciudad));
+            return 1;
+    }
     }
 
     public Cliente buscarCliente(Long telefono) {
-        return Directorio.get(telefono);
+             return Directorio.get(telefono);
+            
     }
 
     public Set<Long> buscarTelefono(String apellido) {
@@ -64,8 +70,13 @@ public class Directorio {
     }
 
     public TreeMap<Long, Cliente> borrarCliente(Long dni) {
+        
         TreeMap<Long, Cliente> list2;
         list2 = new TreeMap<>();
+        if (dni==0L){
+        System.out.println("El dni deben ser completado solo con numeros!");
+        return list2;
+    } 
         Set x = Directorio.keySet();
         Iterator it = x.iterator();
         boolean yaencontro = false;
@@ -86,4 +97,27 @@ public class Directorio {
         return Directorio;
     }
 
+    //para vista borrar
+    public TreeMap<Long, Cliente> buscarPorDNI(Long dni) {
+        
+        TreeMap<Long, Cliente> list2;
+        list2 = new TreeMap<>();
+        if (dni==0L){
+        System.out.println("El dni deben ser completado solo con numeros!");
+        return list2;
+    } 
+        Set x = Directorio.keySet();
+        Iterator it = x.iterator();
+        boolean yaencontro = false;
+        while (it.hasNext() && !yaencontro) {
+            long num = (long) it.next();
+            Cliente cli = Directorio.get(num);
+            if (cli.getDni() == dni) {
+                yaencontro = true;
+                list2.put(num, cli);
+            }
+
+        }
+        return list2;
+    }
 }

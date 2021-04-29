@@ -25,6 +25,9 @@ public class MartinezJuliantp6B {
         System.out.println("el cliente buscado es: " + d1.buscarCliente(1162368385L).toString());
         System.out.println("el cliente buscado es: " + d1.buscarClientes("Capital").toString());
         System.out.println("el cliente buscado es: " + d1.buscarTelefono("Bruno").toString());
+        //vistas
+        Vistas.Desktop desk = new Vistas.Desktop(d1);
+        desk.setVisible(true);
     }
 
 }
