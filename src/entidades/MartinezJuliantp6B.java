@@ -16,7 +16,7 @@ public class MartinezJuliantp6B {
      */
     public static void main(String[] args) {
         Directorio d1 = new Directorio();
-        d1.agregarCliente(1162368385L, 28043262L, "GianFranco", "Bruno", "San Luis", "La Punta");
+        d1.agregarCliente(1162368388L, 28043262L, "GianFranco", "Bruno", "San Luis", "La Punta");
         d1.agregarCliente(1162368386L, 28043263L, "Pablo", "BarrioNuevo", "San Luis", "Capital");
         d1.agregarCliente(1162368387L, 28043261L, "Julian", "Martinez", "San Luis", "Merlo");
         System.out.println("los clientes son: " + d1.totalClientes().toString());
